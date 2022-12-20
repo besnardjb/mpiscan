@@ -1,0 +1,46 @@
+#include <mpi.h>
+#include <stdio.h>
+
+
+#define PRINT_VALUE_SIZE( CONSTANT ) do{ \
+unsigned int size = sizeof(CONSTANT);\
+char value[64];\
+snprintf(value, 64, "%ld", (long int)CONSTANT);\
+printf("\"value_%s\" : %s,\n", #CONSTANT, value);\
+printf("\"size_%s\" : %d,\n", #CONSTANT, size); }while(0)
+
+
+
+
+
+int main(int argc, char** argv)
+{
+	MPI_Init(&argc, &argv);
+
+   printf("{\n");
+
+   PRINT_VALUE_SIZE(MPI_MAX_PROCESSOR_NAME);
+   PRINT_VALUE_SIZE(MPI_MAX_LIBRARY_VERSION_STRING);
+   PRINT_VALUE_SIZE(MPI_MAX_ERROR_STRING);
+   PRINT_VALUE_SIZE(MPI_MAX_DATAREP_STRING);
+   PRINT_VALUE_SIZE(MPI_MAX_INFO_KEY);
+   PRINT_VALUE_SIZE(MPI_MAX_INFO_VAL);
+   PRINT_VALUE_SIZE(MPI_MAX_OBJECT_NAME);
+   PRINT_VALUE_SIZE(MPI_MAX_PORT_NAME);
+   PRINT_VALUE_SIZE(MPI_VERSION);
+   PRINT_VALUE_SIZE(MPI_SUBVERSION);
+   PRINT_VALUE_SIZE(MPI_BOTTOM);
+   PRINT_VALUE_SIZE(MPI_STATUS_IGNORE);
+   PRINT_VALUE_SIZE(MPI_STATUSES_IGNORE);
+   PRINT_VALUE_SIZE(MPI_ERRCODES_IGNORE);
+   PRINT_VALUE_SIZE(MPI_IN_PLACE);
+   PRINT_VALUE_SIZE(MPI_ARGV_NULL);
+   PRINT_VALUE_SIZE(MPI_ARGVS_NULL);
+   PRINT_VALUE_SIZE(MPI_UNWEIGHTED);
+   PRINT_VALUE_SIZE(MPI_WEIGHTS_EMPTY);
+
+   printf("\"_\" : null}\n");
+
+	MPI_Finalize();
+	return 0;
+}
