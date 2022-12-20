@@ -38,7 +38,7 @@ Compiling all MPI implementations with the `-b` (at least those working on your 
 
 We make a code which outputs a valid JSON dict, you may use a key `_` as dummy element (trailing commas).
 
-```lang=c
+```c
 #include <mpi.h>
 #include <stdio.h>
 
@@ -70,7 +70,7 @@ int main(int argc, char** argv)
 
 Sample output:
 
-```lang=js
+```js
 {
       '_': None,
       'size_MPI_BOTTOM': 8,
@@ -93,7 +93,7 @@ Consider using `-f json` for post-processing.
 ### Result
 
 
-```lang=md
+```md
 # openmpi
 
 ## 1.10.0
