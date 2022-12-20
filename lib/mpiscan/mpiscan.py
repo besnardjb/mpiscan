@@ -203,15 +203,13 @@ def cli_entry():
         for i in mpi_impls:
             rets[i.name] = i.compile_and_run(source)
 
-    print(rets)
-
     if args.out:
-        out = open(args.out, "w")
+        fout = open(args.out, "w")
     else:
-        out = sys.stdout
+        fout = sys.stdout
 
-    out = Output(args.format, rets, out)
+    out = Output(args.format, rets, fout)
     out.render()
 
     if args.out:
-        os.close(out)
+        fout.close()
